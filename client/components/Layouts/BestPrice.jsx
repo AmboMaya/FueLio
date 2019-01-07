@@ -19,8 +19,8 @@ const styles = theme => ({
       justifyContent: 'center',
       marginTop: 10,
       marginBottom: 70,
-      marginLeft: 20,
-      marginRight: 20, 
+      marginLeft: 10,
+      marginRight: 10, 
     }
 })
 

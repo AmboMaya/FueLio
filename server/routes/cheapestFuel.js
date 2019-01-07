@@ -10,4 +10,3 @@ router.use(express.json())
 
 module.exports = router
 
-// go to react-to-web-api exercise   from App.js

@@ -11,40 +11,40 @@ const bestPrice = {
         lng: 174.795649
       },
       provider : 'Z',
-      address: '303 Remuera Rd, Remuera, Auckland 1050'
+      address: '303 Remuera Rd, Remuera'
     }
   },
   '98': {
-    price: '$2.74',
+    price: '$2.34',
     station: {
       position: {
-        lat: -36.867017,
-        lng: 174.774982
+        lat: -36.912091,
+        lng: 174.675497
       },
       provider : 'BP',
-      address: '433 Khyber Pass Rd'
+      address: '26/28 Titirangi Rd, New Lynn'
     }
   },
   '95': {
-    price: '$2.20',
+    price: '$2.48',
+    station: {
+      position: {
+        lat: -36.763782,
+        lng: 174.756386
+      },
+      provider : 'Z',
+      address: '151 E Coast Rd, Milford'
+    }
+  },
+  'diesel': {
+    price: '$1.67',
     station: {
       position: {
         lat: -36.867017,
         lng: 174.774982
       },
-      provider : 'BP',
-      address: '12 somestreet mt eden'
-    }
-  },
-  'diesel': {
-    price: '$1.20',
-    station: {
-      position: {
-        lat: -36.885734,
-        lng: 174.802882
-      },
       provider : 'Mobil',
-      address: '60 Green Ln E'
+      address: '433 Khyber Pass Rd, Newmarket'
     }
   }
 }
@@ -59,7 +59,6 @@ function getPrices() {
 }
 
 module.exports = {
-  // displayPrices,
   findStations,
   getPrices
 }

@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const fuelUrl = 'http://localhost:5000/bestPrice'
+const fuelUrl = '/bestPrice'
 
 export function getPrices() {
   return request

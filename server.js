@@ -25,4 +25,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+app.get('/config', (req, res) => {
+  res.send({api_key: process.env.API_KEY})
+})
+
 app.listen(port, () => console.log(`Listening on port ${port}`));

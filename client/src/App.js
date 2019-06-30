@@ -5,6 +5,7 @@ import BestPrice from './components/BestPrice'
 import FuelType from './components/FuelType'
 import MyMapComponent from './map/MyMapComponent'
 import * as api from './client-api-calls/index'
+import config from './client-api-calls/config'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
@@ -23,9 +24,12 @@ const styles = theme => ({
 
 
 class App extends React.Component {
-  
+  state = {
+    
+  }
   componentDidMount() {
     this.bestPrices()
+    this.getConfig()
   }
 
   bestPrices() {
@@ -38,6 +42,16 @@ class App extends React.Component {
     })
   }
 
+  getConfig() {
+    config()
+    .then(config => {
+      this.setState({
+        config
+      }) 
+    })
+  }
+
+
   fuelTypeSelector = (fuelType) => {
     let bestPrice = null
     if(this.state && this.state.bestPrice) {
@@ -49,6 +63,7 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props
+
     let bestPrice = null
     if(this.state && this.state.bestPrice) {
       bestPrice = this.state.bestPrice
@@ -77,17 +92,18 @@ class App extends React.Component {
             <Grid container spacing={10}>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                <MyMapComponent
+                { this.state.config && 
+                  <MyMapComponent
                     isMarkerShown = {selectedFuelType}
-                    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCwcx7MqIw3MQeBhutUBZI2tB6sFh5IR6U"
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${this.state.config.api_key}`}
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={<div style={{ height: `400px` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
                     center={centerPosition}
                     marker={markerPosition}
                     address={address}
-                    provider={provider}
-                  />
+                    provider={provider} />
+                }
                 </Paper>
               </Grid>
             </Grid>

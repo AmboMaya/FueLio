@@ -1,17 +1,16 @@
 import request from 'superagent'
 
-const fuelUrl = '/bestPrice'
+const configUrl = '/config'
 
-export function getPrices() {
+export default function getConfig() {
   return request
-    .get(fuelUrl)
+    .get(configUrl)
     .then(res => {
-      const prices = res.body
+      const config = res.body
       // console.log(prices)
-       return prices
+       return config
     })
     .catch(() => {
       throw Error('something went wrong')
     })
 }
-
